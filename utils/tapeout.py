@@ -11,7 +11,6 @@ else:
     SUMMARY_FILE = "/data/skyfoundry/output/summary.json"
 
 
-@st.cache_data(ttl=60*5)
 def load_summary():
     with open(SUMMARY_FILE, "r") as f:
         return json.load(f)

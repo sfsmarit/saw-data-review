@@ -23,13 +23,11 @@ def list_parts() -> list[str]:
     return parts
 
 
-@st.cache_resource
 def _load_parts() -> list[str]:
     handler = DataHandler()
     return handler.get_available_parts()
 
 
-@st.cache_data(ttl=60*5)
 def build_handler(parts: list[str]) -> DataHandler:
     handler = DataHandler()
     with st.spinner("Loading data..."):
