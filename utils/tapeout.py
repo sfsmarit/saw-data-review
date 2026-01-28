@@ -6,7 +6,7 @@ import json
 from utils.types import TapeoutSortKey, TapeoutFilterKey
 
 if os.name == "nt":
-    SUMMARY_FILE = "tmp/summary.json"
+    SUMMARY_FILE = "summary.json"
 else:
     SUMMARY_FILE = "/data/skyfoundry/output/summary.json"
 

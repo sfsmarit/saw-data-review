@@ -6,7 +6,6 @@ from utils import db
 
 st.set_page_config("SAW Data Review", page_icon=":star:", layout="centered")
 
-st.divider()
 st.subheader("Map")
 
 # Part numbers

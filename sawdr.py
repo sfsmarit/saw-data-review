@@ -23,8 +23,9 @@ st.sidebar.toggle("Ascending", False, key="sort_ascending")
 
 # Main pages
 pages = [
-    st.Page("contents/trend.py", title="Trend"),
-    st.Page("contents/map.py", title="Map"),
+    st.Page("contents/trend.py", title="Trend", icon=":material/trending_up:"),
+    st.Page("contents/map.py", title="Map", icon=":material/stop_circle:"),
+    st.Page("contents/develop.py", title="Develop", icon=":material/settings:"),
 ]
 
 st.navigation(pages).run()

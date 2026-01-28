@@ -7,8 +7,6 @@ from utils import db
 
 st.set_page_config("SAW Data Review", page_icon=":star:", layout="wide")
 
-
-st.divider()
 st.subheader("Trend")
 
 # Part numbers
