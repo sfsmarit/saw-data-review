@@ -2,7 +2,6 @@ import streamlit as st
 from sfsaw import DataHandler
 
 from . import tapeout as to
-from .types import TapeoutSortKey
 
 
 def list_parts() -> list[str]:
@@ -23,6 +22,7 @@ def list_parts() -> list[str]:
     return parts
 
 
+# @st.cache_data(ttl=60*10)
 def _load_parts() -> list[str]:
     handler = DataHandler()
     return handler.get_available_parts()

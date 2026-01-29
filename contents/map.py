@@ -1,6 +1,5 @@
 import streamlit as st
 from sfsaw import plot
-
 from utils import db
 
 
@@ -8,7 +7,7 @@ st.set_page_config("SAW Data Review", page_icon=":star:", layout="centered")
 
 st.subheader("Map")
 
-# Part numbers
+# Part number
 part = st.selectbox(
     "Select part number",
     db.list_parts(),
@@ -16,9 +15,16 @@ part = st.selectbox(
 if not part:
     st.stop()
 
-
-# Load data
+# Build handler
 handler = db.build_handler([part])
+
+# Wafer
+wafer = st.selectbox(
+    "Select wafer",
+    handler.wafers,
+)
+if not wafer:
+    st.stop()
 
 # Y data
 z = st.segmented_control(
@@ -27,15 +33,6 @@ z = st.segmented_control(
 )
 if not z:
     st.stop()
-
-
-wafer = st.selectbox(
-    "Select wafer",
-    handler.wafers,
-)
-if not wafer:
-    st.stop()
-
 
 # Filter
 handler.filter(column=z, exists=True)
