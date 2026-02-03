@@ -2,7 +2,7 @@ import streamlit as st
 from matplotlib import pyplot as plt
 from sfsaw import plot
 
-from utils import db
+from utils import db_utils as db
 
 
 st.set_page_config("SAW Data Review", page_icon=":star:", layout="wide")

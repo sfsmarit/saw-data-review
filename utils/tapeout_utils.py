@@ -3,7 +3,8 @@ from typing import get_args
 import os
 import json
 
-from utils.types import TapeoutSortKey, TapeoutFilterKey
+from utils.type_defs import TapeoutSortKey, TapeoutFilterKey
+
 
 if os.name == "nt":
     SUMMARY_FILE = "summary.json"
@@ -46,9 +47,16 @@ def sort_parts(part_numbers: list[str],
 def filter_parts(part_numbers: list[str],
                  by: TapeoutFilterKey,
                  value: str) -> list[str]:
-    summary = load_summary()
+    if not value:
+        st.write(  # Debug
+            f"filter_parts: by={by}, value='{value}' (no filtering applied)"
+        )
+        return part_numbers
 
+    st.write(f"filter_parts: by={by}, value='{value}'")  # Debug
+
+    summary = load_summary()
     if by == "name":
         return [pn for pn in part_numbers if value.lower() in pn.lower()]
     else:
-        return [pn for pn in part_numbers if value.lower() in summary.get(tapeout_name(pn), {}).get(by).lower()]
+        return [pn for pn in part_numbers if value.lower() in summary.get(tapeout_name(pn), {}).get(by, "").lower()]
